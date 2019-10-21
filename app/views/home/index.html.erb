@@ -1,0 +1,23 @@
+<%= link_to 'Home', root_path %>
+
+<%= form_tag root_path, method: :get, id: 'users_search' do %>
+  <div class="container p-3">
+    <div class="row">
+      <div class="col-md-4">
+        <label>Company name</label>
+        <%= select_tag :company, options_for_select(Company.pluck(:name)), { include_blank: true, class: 'form-control'} %>
+      </div>
+      <div class="col-md-4">
+        <label>Gender</label>
+        <%= select_tag :gender, options_for_select(['Male', 'Female']), { include_blank: true, class: 'form-control'} %>
+      </div>
+      <div class="col-md-4">
+        <label>Active</label>
+        <%= select_tag :active, options_for_select([['Yeap', 1], ['Nooo', 0]]), { include_blank: true, class: 'form-control'} %>
+      </div>
+      <%= hidden_field_tag :page, params[:page] %>
+    </div>
+
+    <div id="users_table"><%= render 'table' %></div>
+  </div>
+<% end %>

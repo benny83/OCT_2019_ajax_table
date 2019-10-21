@@ -1,0 +1,23 @@
+<table class="table table-bordered table-hover table-sm mt-3">
+  <thead></thead>
+    <tr>
+      <th>User name</th>
+      <th>Age</th>
+      <th>Gender</th>
+      <th>Company of insurance</th>
+      <th>Company rating</th>
+      <th>International</th>
+      <th>Active</th>
+      <th>Expiration</th>
+      <th>Business</th>
+      <th>Price, $</th>
+    </tr>
+  <tbody>
+    <% @users.each do |user| %>
+      <% cache user do %>
+        <%= render 'user_data', user: user %>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
