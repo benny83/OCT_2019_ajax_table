@@ -1,0 +1,10 @@
+default: &default
+  adapter: mysql2
+  host: localhost
+  username: root
+  password: caritas2773
+
+development:
+  <<: *default
+  database: task1_dev
+  
